@@ -3,7 +3,10 @@ class User < ApplicationRecord
   has_many :likes, foreign_key: :author_id
   has_many :comments, foreign_key: :author_id
 
-  def check_last_three_posts
+  validates :name, presence: true
+  validates :postCounter, comparison: { greater_than_or_equal_to: 0 }, numericality: { only_integer: true }
+
+  def last_three_posts
     posts.order('created_at Desc').limit(3)
   end
 end
