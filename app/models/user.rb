@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id
 
   def check_last_three_posts
-    posts.limit(3).order(created_at: :desc)
+    posts.order('created_at Desc').limit(3)
   end
 end
