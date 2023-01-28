@@ -1,20 +1,11 @@
 <a name="readme-top"></a>
 
-<div align="center">
-
-  ![](https://img.shields.io/badge/Microverse-blueviolet)
-  <br/>
-
-  <h3><b>About the project</b></h3>
-
-</div>
-
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Diary App ](#-diary-app-)
+- [📖Blog App ](#blog-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -25,6 +16,7 @@
     - [Install](#install)
     - [Usage](#usage)
   - [👥 Author ](#-author-)
+  - [👩‍💻 Alaa Shaheen](#-alaa-shaheen)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
