@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: blog_app_development
+  database: good
+  username: postgres
+  password: waris
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +59,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blog_app_test
+  database: good
+  username: postgres
+  password: waris
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
