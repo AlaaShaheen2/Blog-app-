@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'PostsController', type: :request do
   user = User.create(name: 'Ahmad', photo: 'Some image', bio: 'Good friend', postCounter: 12)
   subject do

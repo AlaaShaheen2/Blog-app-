@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'UsersController', type: :request do
   subject { User.new(name: 'Ahmad', photo: 'some image', bio: 'Good friend', postCounter: 12) }
 
@@ -20,7 +19,6 @@ RSpec.describe 'UsersController', type: :request do
       expect(response.body).to include('This page is to list all users')
     end
   end
-
 
   describe 'GET #show' do
     before(:example) { get user_path(id: 1) }
