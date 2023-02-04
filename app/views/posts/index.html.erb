@@ -1,2 +1,11 @@
-<h1>Posts index action page</h1>
-<h3>This page is to list all posts of one user</h3>
+<section class="posts_container">
+  <%= render partial: "shared/user", locals: {user: @user || "No users found"} %>
+  <% @posts.each do |post| %>
+    <%= render partial: 'shared/post', locals: { post: post } %>
+    <div class="recent_comments_container">
+      <% post.last_five_comments.each do |comment| %>
+        <%= render partial: 'shared/comment', locals: { comment: comment } %>
+      <% end %>
+    </div>
+  <% end %>
+</section>
