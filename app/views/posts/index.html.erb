@@ -1,7 +1,7 @@
 <section class="posts_container">
   <%= render partial: "shared/user", locals: {user: @user || "No users found"} %>
   <% @posts.each do |post| %>
-    <%= render partial: 'shared/post', locals: { post: post } %>
+    <%= render partial: 'shared/post', locals: { post: post, show_full_post: false } %>
     <div class="recent_comments_container">
       <% post.last_five_comments.each do |comment| %>
         <%= render partial: 'shared/comment', locals: { comment: comment } %>

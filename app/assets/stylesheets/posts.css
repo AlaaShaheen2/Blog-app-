@@ -1,4 +1,4 @@
-.post_info_container {
+.post_container {
   gap: 1em;
   padding: 1em;
   display: flex;
@@ -29,7 +29,30 @@
   flex-direction: column;
 }
 
-.comment_info_container {
+.comment_container {
   gap: 1em;
   display: flex;
+}
+
+.com_post_container {
+  padding: 4em 6em;
+}
+
+.com_comments_container {
+  gap: 0.4em;
+  padding: 1em;
+  display: flex;
+  border: 3px solid;
+  flex-direction: column;
+}
+
+.com_post_container > .post_container {
+  margin-bottom: 0.2em;
+  gap: 0;
+}
+
+.com_post_container .post_text {
+  order: 1;
+  display: flex;
+  margin-top: 1em;
 }
