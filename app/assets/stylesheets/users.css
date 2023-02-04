@@ -59,6 +59,7 @@
 
 .btn {
   display: flex;
+
   /* margin: 1em auto; */
   border: 3px solid;
   padding: 1em 2.5em;
