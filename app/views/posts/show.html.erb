@@ -1,2 +1,8 @@
-<h1>Posts show action page</h1>
-<h3>This page is to list one post of one user</h3>
+<section class="com_post_container">
+  <%= render partial: 'shared/post', locals: { post: @post, show_full_post: true } %>
+  <div class="com_comments_container">
+    <% @post.comments.each do |comment| %>
+      <%= render partial: 'shared/comment', locals: { comment: comment } %>
+    <% end %>
+  </div>
+</section>
