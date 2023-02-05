@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-  has_many :posts, foreign_key: :author_id
-  has_many :likes, foreign_key: :author_id
-  has_many :comments, foreign_key: :author_id
+  has_many :comments, class_name: 'Comment', foreign_key: 'author_id'
+  has_many :posts, class_name: 'Post', foreign_key: 'author_id'
+  has_many :likes, class_name: 'Like', foreign_key: 'author_id'
 
-  validates :name, presence: true
-  validates :postCounter, comparison: { greater_than_or_equal_to: 0 }, numericality: { only_integer: true }
+  validates :name, presence: true, length: { in: 3..25 }
+  validates :postCounter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :photo, presence: true
+  validates :bio, presence: true
 
   def last_three_posts
     posts.order('created_at Desc').limit(3)

@@ -1,12 +1,14 @@
 class Post < ApplicationRecord
-  after_save :update_posts_counter
-  belongs_to :author, class_name: 'User'
-  has_many :likes
-  has_many :comments
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  has_many :comments, class_name: 'Comment', foreign_key: 'post_id'
+  has_many :likes, class_name: 'Like', foreign_key: 'post_id'
 
-  validates :title, presence: true, length: { maximum: 250 }
-  validates :comments_counter, comparison: { greater_than_or_equal_to: 0 }, numericality: { only_integer: true }
-  validates :likes_counter, comparison: { greater_than_or_equal_to: 0 }, numericality: { only_integer: true }
+  after_save :update_posts_counter
+
+  validates :text, presence: true
+  validates :title, presence: true, length: { in: 3..250 }
+  validates :comments_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :likes_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def last_five_comments
     comments.order('created_at Desc').limit(5)
@@ -15,6 +17,6 @@ class Post < ApplicationRecord
   private
 
   def update_posts_counter
-    author.update(postCounter: author.posts.length)
+    author.increment!(:postCounter)
   end
 end
