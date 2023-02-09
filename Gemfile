@@ -12,7 +12,6 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
-
 gem 'database_cleaner'
 
 gem 'rails-controller-testing'
@@ -79,6 +78,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'rails-controller-testing'
-
