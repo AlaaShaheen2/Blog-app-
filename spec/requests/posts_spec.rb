@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'PostsController', type: :request do
-  user = User.create(name: 'Ahmad', photo: 'Some image', bio: 'Good friend', postCounter: 12)
   subject do
-    Post.new(title: 'Something', text: 'This is test post', comments_counter: 4, likes_counter: 6,
-             author: user)
+    @user = User.create(name: 'Alaa', photo: 'photo.jpg', bio: 'Developer', postCounter: 3)
+    @post = Post.create(title: 'Ruby', text: 'Alaa talks about Ruby!', comments_counter: 20, likes_counter: 16,
+                        author: @user)
   end
 
   before { subject.save }
 
   describe 'GET #index' do
-    before(:each) { get user_posts_path(user_id: 1) }
+    before(:each) { get user_posts_path(user_id: @user.id) }
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
@@ -20,12 +20,12 @@ RSpec.describe 'PostsController', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('This page is to list all posts of one user')
+      expect(response.body).to include(@post.text)
     end
   end
 
   describe 'GET #show' do
-    before(:each) { get user_post_path(user_id: 1, id: 1) }
+    before(:each) { get user_post_path(user_id: @user.id, id: @post.id) }
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
@@ -35,7 +35,7 @@ RSpec.describe 'PostsController', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('This page is to list one post of one user')
+      expect(response.body).to include(@post.text)
     end
   end
 end
