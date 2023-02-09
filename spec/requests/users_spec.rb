@@ -1,37 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe 'UsersController', type: :request do
-  subject { User.new(name: 'Ahmad', photo: 'some image', bio: 'Good friend', postCounter: 12) }
+RSpec.describe 'Users controller test', type: :request do
+  subject { @user = User.create(name: 'Alaa', photo: 'alaa.png', bio: 'Developer', postCounter: 2) }
 
   before { subject.save }
 
   describe 'GET #index' do
-    before(:example) { get users_path } # get(:index)
+    before(:example) { get users_path }
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'renders the correct template' do
+    it 'renders the correct routes' do
       expect(response).to render_template(:index)
     end
 
-    it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('This page is to list all users')
+    it 'has the correct placeholder text in the response body' do
+      expect(response.body).to include(@user.photo)
     end
   end
 
   describe 'GET #show' do
-    before(:example) { get user_path(id: 1) }
+    before(:example) { get user_path(id: @user.id) }
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'renders the correct template' do
+    it 'renders the correct route' do
       expect(response).to render_template(:show)
     end
 
-    it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('This page is to list only one user')
+    it 'has the correct placeholder text in the response body' do
+      expect(response.body).to include(@user.photo)
     end
   end
 end
