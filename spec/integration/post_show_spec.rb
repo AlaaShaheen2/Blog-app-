@@ -33,7 +33,7 @@ RSpec.describe 'Posts Show', type: :feature do
   describe 'To test post show page methods' do
     it 'displays the post title' do
       visit user_post_path(@user, @post.id)
-      expect(page).to have_content('Ruby is easy to learn')
+      expect(page).to have_content('About Ruby')
     end
 
     it 'displays the post author' do
